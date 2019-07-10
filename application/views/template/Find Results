@@ -1,0 +1,17 @@
+Searching 4812 files for "modernizr-2.8.3.min.js"
+
+/opt/lampp/htdocs/el/application/views/auth/login.php:
+   51      <!-- modernizr JS
+   52  		============================================ -->
+   53:     <script src="<?php echo base_url();?>application/views/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+   54  </head>
+   55  
+
+/opt/lampp/htdocs/el/application/views/template/headens.php:
+   56      <!-- modernizr JS
+   57      ============================================ -->
+   58:     <script src="<?php echo base_url();?>application/views/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+   59  </head>
+   60  
+
+2 matches across 2 files
