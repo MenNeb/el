@@ -9,6 +9,7 @@ class User extends CI_Controller
     $this->load->library('session');
 	$this->load->model('Mapprenant');
 	$this->load->model('MEnseignant');
+	$this->load->model('Mparcours');
 	}
 
 	public function login()
@@ -21,9 +22,12 @@ class User extends CI_Controller
 		if($row)
 
 		{	$counting['apprenant']=$this->db->query("select count(*) as nbrapp from Apprenant")->result();
-			$counting['parcours']=$this->db->query("select count(*) as nbrpar from parcours")->result();
+			$counting['parcourscount']=$this->db->query("select count(*) as nbrpar from parcours")->result();
 			$counting['action']=$this->db->query("select count(*) as nbraction from action")->result();
 			$counting['session']=$this->db->query("select count(*) as nbrsession from session")->result();
+			
+			 $counting['parcours']=$this->Mparcours->get15();
+			
 			$data=$que->result();
 			if($data[0]->type==2){
 				//getByUserID

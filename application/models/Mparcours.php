@@ -49,6 +49,16 @@ class Mparcours extends CI_Model
         $this->db->join('action act', 'p.id_action = act.id');
         $this->db->join('session s', 'p.id_session = s.id');
         $this->db->join('Apprenant a', 's.id_apprenant = a.id');
+        $this->db->order_by("STR_TO_DATE(s.date, '%d-%M-%Y') ", "desc");
+        $q = $this->db->get(); 
+        return $q->result();
+     }
+    public function get15(){
+        $this->db->from('parcours p');
+        $this->db->join('action act', 'p.id_action = act.id');
+        $this->db->join('session s', 'p.id_session = s.id');
+        $this->db->join('Apprenant a', 's.id_apprenant = a.id')->order_by("STR_TO_DATE(s.date, '%d-%M-%Y') desc");
+        $this->db->limit(15);
         $q = $this->db->get(); 
         return $q->result();
      }
