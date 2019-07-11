@@ -56,7 +56,9 @@ class User extends CI_Controller
 	}
 	function details($id){
 		$id =$this->session->userdata('id');
+		$type =$this->session->userdata('type');
 		if($id!=null){
+
 			$data['apprenant'] = $this->Mapprenant->getByID($id );
 			$this->apprenant_construc('apprenant/profile',$data);
 		}
@@ -64,7 +66,20 @@ class User extends CI_Controller
 	
 	function dashboard()
 	{
-	$this->load->view('dashboard');
+		$id =$this->session->userdata('id');
+		$type =$this->session->userdata('type');
+		if($id!=null){
+			$counting['apprenant']=$this->db->query("select count(*) as nbrapp from Apprenant")->result();
+			$counting['parcours']=$this->db->query("select count(*) as nbrpar from parcours")->result();
+			$counting['action']=$this->db->query("select count(*) as nbraction from action")->result();
+			$counting['session']=$this->db->query("select count(*) as nbrsession from session")->result();
+			if($type==2){
+				$this->apprenant_construc('template/page',$counting);
+			}else{
+				$this->page_construct('template/page',$counting);
+			}
+			
+		}
 	}
 
 	function uploadform()

@@ -5,11 +5,11 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="normal-table-list mg-t-30">
                         <div class="basic-tb-hd">
-                            <h2>Apprenant </h2>
-                            <p>Cliquer sur (<code> session / actions </code> ) pour consulter </p>
+                            <h2>Action  </h2>
+                            <p>Cliquer sur (<code> Parcours </code> ) pour consulter </p>
                         </div>
                         <div class="bsc-tbl-hvr">
-                            <table class="table table-hover">
+                            <table class="table table-hover" id="action-table">
                                 <thead>
                                     <tr calss="active">
                                         <th>#</th>

@@ -182,42 +182,7 @@
                 </div>
             </div>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-5 col-xs-12">
-                    <div class="statistic-right-area notika-shadow mg-tb-30 sm-res-mg-t-0">
-                        <div class="past-day-statis">
-                            <h2>For The Past 30 Days</h2>
-                            <p>Fusce eget dolor id justo luctus the commodo vel pharetra nisi. Donec velit of libero.</p>
-                        </div>
-                        <div class="dash-widget-visits"><canvas width="223" height="70" style="display: inline-block; width: 223px; height: 70px; vertical-align: top;"></canvas></div>
-                        <div class="past-statistic-an">
-                            <div class="past-statistic-ctn">
-                                <h3><span class="counter">320,000</span></h3>
-                                <p>Page Views</p>
-                            </div>
-                            <div class="past-statistic-graph">
-                                <div class="stats-bar"><canvas width="68" height="35" style="display: inline-block; width: 68px; height: 35px; vertical-align: top;"></canvas></div>
-                            </div>
-                        </div>
-                        <div class="past-statistic-an">
-                            <div class="past-statistic-ctn">
-                                <h3><span class="counter">103,000</span></h3>
-                                <p>Total Clicks</p>
-                            </div>
-                            <div class="past-statistic-graph">
-                                <div class="stats-line"><canvas width="68" height="35" style="display: inline-block; width: 68px; height: 35px; vertical-align: top;"></canvas></div>
-                            </div>
-                        </div>
-                        <div class="past-statistic-an">
-                            <div class="past-statistic-ctn">
-                                <h3><span class="counter">2,400,000</span></h3>
-                                <p>Site Visitors</p>
-                            </div>
-                            <div class="past-statistic-graph">
-                                <div class="stats-bar-2"><canvas width="68" height="35" style="display: inline-block; width: 68px; height: 35px; vertical-align: top;"></canvas></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>

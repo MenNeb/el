@@ -1,11 +1,11 @@
-//parcours
+
     <div class="breadcomb-area">
         <div class="container">
           <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="normal-table-list mg-t-30">
                         <div class="basic-tb-hd">
-                            <h2>Sessions des Apprenants </h2>
+                            <h2>Parcours des Apprenants </h2>
                            
                         </div>
                         <div class="bsc-tbl-hvr">

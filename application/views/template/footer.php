@@ -81,7 +81,20 @@
     <!-- tawk chat JS
         ============================================ -->
     <script src="<?php echo base_url();?>application/views/assets/js/tawk-chat.js"></script>
+   
+ <!-- Data Table JS
+        ============================================ -->
+    <script src="js/data-table/jquery.dataTables.min.js"></script>
+    <script src="js/data-table/data-table-act.js"></script>
     <script type="text/javascript">
+        $(document).ready(function() {
+             $('#action-table').DataTable();
+        });
+    </script>
+
+    <script type="text/javascript">
+
+
         $(function(){
     var ctx = document.getElementById("barperso");
     var barchart1 = new Chart(ctx, {

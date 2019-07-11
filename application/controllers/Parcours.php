@@ -51,11 +51,14 @@ class Parcours extends CI_Controller
 	function getbyIDaction($id){
 		
 ///select * from parcours p INNER join Apprenant a on p.id_apprenant=a.id INNER JOIN action act on act.id=p.id_action INNER join session s on s.id_apprenant=a.id where p.id_apprenant=19
-		
+		$id =$this->session->userdata('id');
+		if($id!=null){
 		$data['parcours'] = $query = $this->db->query("select * from Apprenant a inner join session s on a.id=s.id_apprenant inner join parcours p on p.id_apprenant=a.id and p.id_session=s.id inner join action act on act.id=p.id_action where act.id=".$id)->result();
 		
 		 $this->page_construct('enseignant/parcours',$data);
-		
+		}else{
+			$this->load->view('/auth/login.php');
+		}
 	}
 	// public function get_apprenant()
  //     {

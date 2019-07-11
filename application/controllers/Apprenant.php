@@ -7,6 +7,8 @@ class Apprenant extends CI_Controller
 	$this->load->database();
 	$this->load->helper('url');
 	$this->load->model('Mapprenant');
+
+	$this->load->library('session');
 	}
 	
 	function dashboard()
@@ -17,9 +19,13 @@ class Apprenant extends CI_Controller
 
 	function getall()
 	{
-    $data['users'] = $this->Mapprenant->get_Apprenant();
+		$id =$this->session->userdata('id');
+		if($id!=null){
+			 $data['users'] = $this->Mapprenant->get_Apprenant();
     
-		$this->page_construct('enseignant/apprenant',$data);
+			$this->page_construct('enseignant/apprenant',$data);
+		}
+   
 	}
 
 

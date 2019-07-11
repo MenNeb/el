@@ -13,9 +13,8 @@
                                 <thead>
                                     <tr calss="active">
                                         <th>#</th>
-                                        <th>Nom</th>
-                                        <th>Prenom</th>
-                                        <th>Actions</th>
+                                        <th>Titre</th>
+                                      
                                         
                                     </tr>
                                 </thead>

@@ -7,6 +7,7 @@ class Session extends CI_Controller
 	$this->load->database();
 	$this->load->helper('url');
 	$this->load->model('Msession');
+	$this->load->library('session');
 	}
 	
 	function dashboard()
@@ -17,9 +18,13 @@ class Session extends CI_Controller
 
 	function getall()
 	{
-    $data['sessions'] = $this->Msession->getAll();
+		$id =$this->session->userdata('id');
+		if($id!=null){
+			 $data['sessions'] = $this->Msession->getAll();
     
 		$this->page_construct('enseignant/session',$data);
+		}
+   
 	}
 
 	function getbyID($id){

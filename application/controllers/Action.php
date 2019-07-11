@@ -3,10 +3,11 @@ class Action extends CI_Controller
 {
 	public function __construct()
 	{
-	parent::__construct();
-	$this->load->database();
-	$this->load->helper('url');
-	$this->load->model('Maction');
+		parent::__construct();
+		$this->load->database();
+		$this->load->helper('url');
+		$this->load->model('Maction');
+		$this->load->library('session');		
 	}
 	
 	function dashboard()
@@ -17,9 +18,14 @@ class Action extends CI_Controller
 
 	function getall()
 	{
-    $data['actions'] = $this->Maction->get_all();
+		$id =$this->session->userdata('id');
+		if($id!=null){
+			 $data['actions'] = $this->Maction->get_all();
+			$this->page_construct('enseignant/action',$data);
+		}
+   
     
-		$this->page_construct('enseignant/action',$data);
+		
 	}
 
 

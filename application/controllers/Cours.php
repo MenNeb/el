@@ -7,6 +7,7 @@ class Cours extends CI_Controller
 	$this->load->database();
 	$this->load->helper('url');
 	$this->load->model('Mcours');
+	$this->load->library('session');
 	}
 	
 	function dashboard()
@@ -17,9 +18,13 @@ class Cours extends CI_Controller
 
 	function getall()
 	{
-    	$data['cours'] = $this->Mcours->get_all();
-    	var_dump($data);
+		$id =$this->session->userdata('id');
+		if($id!=null){
+			$data['cours'] = $this->Mcours->get_all();
+    
 		$this->page_construct('enseignant/cours',$data);
+		}
+    	
 	}
 
 
