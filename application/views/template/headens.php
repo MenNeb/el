@@ -120,6 +120,8 @@
                         </li>
                          <li><a data-toggle="tab" href="#Statistique"><i class="notika-icon notika-bar-chart"></i> Statistique</a>
                         </li>
+                         <li><a data-toggle="tab" href="#edition"><i class="notika-icon notika-support"></i> Editer les requete</a>
+                        </li>
                        
                     </ul>
                       <?php $id =$this->session->userdata('id');?>
@@ -187,6 +189,13 @@
                                 <li><a href="color.html"> Statistique Action</a>
                                 </li>
                               
+                            </ul>
+                        </div>
+                           <div id="edition" class="tab-pane notika-tab-menu-bg animated flipInX">
+                            <ul class="notika-main-menu-dropdown">
+                                <li><a href="<?php echo site_url('Parcours/filterform')?>">Edition des requete de fichier log</a>
+                                </li>
+                                
                             </ul>
                         </div>
                     </div>
