@@ -100,6 +100,9 @@
                             <h2>Edition de requetes de base de données </h2>
                             
                         </div>
+                         <?php echo form_open('parcours/search');?> 
+                    <form  id="demo1-upload">
+
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <div class="nk-int-mk">
@@ -110,7 +113,7 @@
                                         <i class="notika-icon notika-support"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <input type="text" class="form-control" data-mask="999-99-999-9999-9" placeholder="ISBN">
+                                        <input type="text" name="nom" class="form-control" data-mask="999-99-999-9999-9" placeholder="ISBN">
                                     </div>
                                 </div>
                             </div>
@@ -123,7 +126,7 @@
                                         <i class="notika-icon notika-mail"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <input type="text" class="form-control" data-mask="999.999.999.9999" placeholder="IPV4">
+                                        <input type="text" name="prenom"  class="form-control" data-mask="999.999.999.9999" placeholder="IPV4">
                                     </div>
                                 </div>
                             </div>
@@ -136,7 +139,7 @@
                                         <i class="notika-icon notika-tax"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <input type="text" class="form-control" data-mask="99-9999999" placeholder="Tax ID">
+                                        <input type="text" name="action" class="form-control" data-mask="99-9999999" placeholder="Tax ID">
                                     </div>
                                 </div>
                             </div>
@@ -151,7 +154,7 @@
                                         <i class="notika-icon notika-phone"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <input type="text" class="form-control" data-mask="(999) 999-9999" placeholder="Phone">
+                                        <input type="text" name="ressource"  class="form-control" data-mask="(999) 999-9999" placeholder="Phone">
                                     </div>
                                 </div>
                             </div>
@@ -165,7 +168,7 @@
                                         <i class="notika-icon notika-calendar"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <input type="text" class="form-control" data-mask="99/99/9999" placeholder="dd/mm/yyyy">
+                                        <input type="Date" name="date" class="form-control" data-mask="99/99/9999" placeholder="dd/mm/yyyy">
                                     </div>
                                 </div>
                             </div>
@@ -174,10 +177,11 @@
                                       <p>Cliquez ci-dessous pour commencez la recherche</p>                            
                                 </div>
                                 <div class="form-group ic-cmp-int">
-                                    <button class="btn btn-primary notika-btn-Primary waves-effect">Chercher</button>
+                                    <button type="submit" class="btn btn-primary notika-btn-Primary waves-effect">Chercher</button>
                                 </div>
                             </div>
                         </div>
+                    </form>
                     </div>
                 </div>
             </div>

@@ -47,6 +47,19 @@ class Parcours extends CI_Controller
 		 $this->page_construct('enseignant/parcours',$data);
 		
 	}
+	function search(){
+		$nom=$this->input->post('nom');
+		$prenom=$this->input->post('prenom');
+		$action=$this->input->post('action');
+		$ressource=$this->input->post('ressource');
+		$date=$this->input->post('date');
+		$where =" where ";
+		if($nom!='')
+			
+
+		echo $nom.' - '.$prenom.' - '.$action.' - '.$ressource.' - '.$date ;
+
+	}
 
 	function getbyIDaction($id){
 		
