@@ -229,6 +229,35 @@
         }
     });});
     </script>
+
+    <script type="text/javascript">
+
+
+        $(function(){
+    var ctx = document.getElementById("sessionparcours");
+    var aData = JSON.parse(`<?php echo $chartapprenan; ?>`);
+    var barchart1 = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels:aData.label,
+            datasets: [{
+                label: "Stats",
+                data: aData.data,
+                backgroundColor: ["#b97777","#7ca2b3","#f3d2ad","#e0cf7c","#434343",
+                  "#fc6b05", "#ffb62b","#65b017","#99d8d8","#9bb7bb","#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#013644" ,"#8f1a1d" ,
+                "#d3623a" ,"#fba92e" ,"#008a93", "#ffd319" ,"#ff901f","#ff2975","#c700b5","#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#013644" ,"#8f1a1d" ,"#d3623a" ,"#fba92e" ,"#b000ff" ,"#b97777","#7ca2b3","#f3d2ad","#e0cf7c","#434343",  "#fc6b05", "#ffb62b","#65b017","#99d8d8","#9bb7bb", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#013644" ,"#8f1a1d" ,"#d3623a" ,"#fba92e" ,"#008a93", "#ffd319" ,"#ff901f","#ff2975","#b97777","#7ca2b3","#f3d2ad","#e0cf7c","#434343",
+                  "#fc6b05", "#ffb62b","#65b017","#99d8d8","#9bb7bb","#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#013644" ,"#8f1a1d" ,
+                "#d3623a" ,"#fba92e" ,"#008a93", "#ffd319" ,"#ff901f","#ff2975","#c700b5","#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#013644" ,"#8f1a1d" ,"#d3623a" ,"#fba92e" ,"#b000ff" ,"#b97777","#7ca2b3","#f3d2ad","#e0cf7c","#434343",  "#fc6b05", "#ffb62b","#65b017","#99d8d8","#9bb7bb", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#013644" ,"#8f1a1d" ,"#d3623a" ,"#fba92e" ,"#008a93", "#ffd319" ,"#ff901f","#ff2975"]
+            }]
+        },
+        options: {
+            title: {
+        display: true,
+        text: 'Statistique nombre de Parcours pour chaque session '
+      }
+        }
+    });});
+    </script>
 </body>
   
 

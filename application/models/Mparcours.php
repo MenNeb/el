@@ -62,4 +62,8 @@ class Mparcours extends CI_Model
         $q = $this->db->get(); 
         return $q->result();
      }
-}
+
+     function getstats($id){
+        
+     }
+}   

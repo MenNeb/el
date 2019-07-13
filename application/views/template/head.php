@@ -74,13 +74,19 @@
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                     <div class="header-top-menu">
                         <ul class="nav navbar-nav notika-top-nav">
-                            <li class="nav-item dropdown">
-                                <a href="<?php echo base_url();?>application/views/assets/#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><span><i class="notika-icon notika-search"></i></span></a>
-                                <div role="menu" class="dropdown-menu search-dd animated flipInX">
-                                    <div class="search-input">
-                                        <i class="notika-icon notika-left-arrow"></i>
-                                        <input type="text" />
+                             <li class="nav-item dropdown">
+                                <a href="<?php echo base_url();?>application/views/assets/#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><span><i class="notika-icon notika-menu"> </i></span></a>
+                                <div role="menu" class="dropdown-menu message-dd animated zoomIn">
+                                    
+                                 
+                                    <div class="hd-mg-tt">
+                                         <a href="<?php echo site_url('User/logout')?>" ><h2>Logout </h2></a>
                                     </div>
+                                    
+                                      
+                                     
+                                
+                                    
                                 </div>
                             </li>
                            
@@ -122,7 +128,7 @@
                     <div class="tab-content custom-menu-content">
                         <div id="Acceuil" class="tab-pane in active notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                                <li><a href="#">Acceuil</a>
+                                <li><a href="<?php echo site_url('User/dashboard')?>">Acceuil</a>
                                 </li>
                                 
                             </ul>
@@ -141,8 +147,7 @@
                             <ul class="notika-main-menu-dropdown">
                                 <li><a href="<?php echo site_url('Parcours/getbyID/'.$id)?>">Mes parcours</a>
                                 </li>
-                                <li><a href="form-components.html">Parccours/apprenants</a>
-                                </li>
+                                
                                 
                             </ul>
                         </div>

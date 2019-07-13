@@ -130,26 +130,7 @@ class Parcours extends CI_Controller
     
 		$this->page_construct('enseignant/session',$data);
 	
-	}/*
-	function getstats($id){
-
-		$query =  $this->db->query(
-			"select count(*) as count,ac.nomAction from Apprenant a INNER join parcours p on p.id_apprenant =a.id inner join action ac on ac.id=p.id_action where a.id= " . $id . "
-     GROUP by p.id_action,ac.nomAction order by ac.nomAction"); 
- 
-      $record = $query->result();
-      $chartd = [];
- 
-      foreach($record as $row) {
-            $chartd['label'][] = $row->nomAction;
-            $chartd['data'][] = (int) $row->count;
-      }
-      $data['chart_data'] = $chartd;
-       $this->load->view( 'template/head');
-        $this->load->view( 'apprenant/stats',$data);
 	}
-*/
-
 	public function stats()
 	{
  $query = $this->db->query("SELECT count(*) as nbraction , a.nom as nom ,a.prenom as prenom FROM `parcours` p inner join apprenant a on a.id=p.id_apprenant GROUP by p.id_apprenant");
@@ -222,5 +203,18 @@ class Parcours extends CI_Controller
         $this->load->view('template/footer');
 	
 	}
+
+	function getstats($id){
+        $query = $this->db->query("select count(*) as count, p.id_session , s.ip , s.date as date from apprenant a inner join parcours p on p.id_apprenant=a.id inner join session s on s.id =p.id_session where a.id=".$id." GROUP by p.id_session");
+			$record = $query->result();
+      		foreach($record as $row) {
+      			$chartaction['label'][] = $row->date ;
+      			$chartaction['data'][] = (int) $row->count;
+      	
+
+      		}
+       	$data['chartapprenan'] = json_encode($chartaction);
+	$this->apprenant_construct('apprenant/stats',$data);
+     }
 }
 ?>

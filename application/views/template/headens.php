@@ -80,10 +80,14 @@
                                 <a href="<?php echo base_url();?>application/views/assets/#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><span><i class="notika-icon notika-menu"> </i></span></a>
                                 <div role="menu" class="dropdown-menu message-dd animated zoomIn">
                                      <div class="hd-mg-tt">
-                                         <a href="<?php echo site_url('User/updetails/'.$id)?>" ><h2>Modifier Profile  </h2></a>
+                                         <a href="<?php echo site_url('User/updetails/'.$id)?>" class="btn notika-btn-red waves-effect"><span class="btn btn-teal teal-icon-notika waves-effect"><i class="notika-icon notika-refresh"></i></span>Modifier Profile </a>
                                     </div>
                                     <div class="hd-mg-tt">
-                                         <a href="<?php echo site_url('User/logout')?>" ><h2>Logout </h2></a>
+                                            <a href="<?php echo site_url('User/uppassword/'.$id)?>" class="btn notika-btn-red waves-effect"> <span class="btn btn-teal teal-icon-notika waves-effect"><i class="notika-icon notika-refresh"></i></span>Modifier mot de passe </a>
+                                    </div>
+                                 
+                                    <div class="hd-mg-tt">
+                                         <a href="<?php echo site_url('User/logout')?>" class="btn notika-btn-red waves-effect" ><i class="notika-icon notika-next"></i>Logout </a>
                                     </div>
                                     
                                       
@@ -171,8 +175,7 @@
                             <ul class="notika-main-menu-dropdown">
                                 <li><a href="<?php echo site_url('Parcours/getall')?>">Tout les parcours</a>
                                 </li>
-                                <li><a href="form-components.html">Parccours/apprenants</a>
-                                </li>
+                               
                                 
                             </ul>
                         </div>

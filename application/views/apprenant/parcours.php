@@ -1,4 +1,3 @@
-//parcours
     <div class="breadcomb-area">
         <div class="container">
           <div class="row">

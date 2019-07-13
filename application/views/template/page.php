@@ -89,6 +89,9 @@
     
     <!-- End Sale Statistic area-->
     <!-- Start Email Statistic area-->
+     <?php $type =$this->session->userdata('type');
+        if($type==1){
+     ?>
    <div class="sale-statistic-area">
         <div class="container">
             <div class="row">
@@ -113,7 +116,7 @@
                                         <i class="notika-icon notika-support"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <input type="text" name="nom" class="form-control" data-mask="999-99-999-9999-9" placeholder="ISBN">
+                                        <input type="text" name="nom" class="form-control" data-mask="999-99-999-9999-9" placeholder="NOM">
                                     </div>
                                 </div>
                             </div>
@@ -126,7 +129,7 @@
                                         <i class="notika-icon notika-mail"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <input type="text" name="prenom"  class="form-control" data-mask="999.999.999.9999" placeholder="IPV4">
+                                        <input type="text" name="prenom"  class="form-control" data-mask="999.999.999.9999" placeholder="PRENOM">
                                     </div>
                                 </div>
                             </div>
@@ -139,7 +142,7 @@
                                         <i class="notika-icon notika-tax"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <input type="text" name="action" class="form-control" data-mask="99-9999999" placeholder="Tax ID">
+                                        <input type="text" name="action" class="form-control" data-mask="99-9999999" placeholder="ACTION">
                                     </div>
                                 </div>
                             </div>
@@ -154,7 +157,7 @@
                                         <i class="notika-icon notika-phone"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <input type="text" name="ressource"  class="form-control" data-mask="(999) 999-9999" placeholder="Phone">
+                                        <input type="text" name="ressource"  class="form-control" data-mask="(999) 999-9999" placeholder="RESSOURCE">
                                     </div>
                                 </div>
                             </div>
@@ -186,13 +189,15 @@
                 </div>
             </div>
                 </div>
-                  
+                
+              
         </div>
-            
+            </div>
             
     </div>
     <!-- End Realtime sts area-->
     <div class="realtime-statistic-area">
     </div>
-
+<?php }
+     ?>
 </div>  

@@ -20,6 +20,19 @@ class Muser extends CI_Model
         return FALSE;
     }
 
+     public function existp($prenom)
+    {
+        
+        
+        $this->db->where('password',$prenom);
+        $q = $this->db->get("user");
+        if ($q->num_rows() > 0) {
+            
+            return TRUE;
+        }
+        return FALSE;
+    }
+
     public function ajouter($data){
         
     	$this->db->insert('user', $data);
@@ -45,4 +58,11 @@ class Muser extends CI_Model
        return $q->result();
      }
 
+    function updatepass($password,$id){
+      
+           $this->db->set('password', $password);
+          
+          $this->db->where('id', $id);
+          $this->db->update('user');
+     }
 }

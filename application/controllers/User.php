@@ -10,6 +10,7 @@ class User extends CI_Controller
 	$this->load->model('Mapprenant');
 	$this->load->model('MEnseignant');
 	$this->load->model('Mparcours');
+	$this->load->model('Muser');
 	}
 
 	public function login()
@@ -87,10 +88,7 @@ class User extends CI_Controller
 		}
 	}
 
-	function uploadform()
-	{
-		$this->page_construct('enseignant/uploadfile',array('error' => ' ' ));
-	}
+	
 	function page_construct($page, $meta = array(), $data = array()) {
     
         $this->load->view( 'template/headens', $meta);
@@ -145,5 +143,36 @@ class User extends CI_Controller
 		}	
 		
  	}	
+
+ 	function uppassword(){
+ 		$type =$this->session->userdata('type');
+ 		if($type ==1){
+			
+
+			$this->page_construct('enseignant/passwordform');
+		}elseif ($type==2) {
+			$this->apprenant_construc('apprenant/passwordform');
+		}	
+ 	}
+
+ 	function updatepass(){
+ 		$iduser =$this->session->userdata('user_id');
+ 		$type =$this->session->userdata('type');
+ 		$old=$this->input->post('old');
+		$new=$this->input->post('nouveau');
+		if($this->Muser->existp($old)){
+			$this->Muser->updatepass($new,$iduser);
+			$counting['apprenant']=$this->db->query("select count(*) as nbrapp from Apprenant")->result();
+			$counting['parcours']=$this->db->query("select count(*) as nbrpar from parcours")->result();
+			$counting['action']=$this->db->query("select count(*) as nbraction from action")->result();
+			$counting['session']=$this->db->query("select count(*) as nbrsession from session")->result();
+			if($type==2){
+				$this->apprenant_construc('template/page',$counting);
+			}else{
+				$this->page_construct('template/page',$counting);
+			}
+		}
+
+ 	}
 }
 ?>
