@@ -56,6 +56,7 @@
     <!-- modernizr JS
     ============================================ -->
     <script src="<?php echo base_url();?>application/views/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 </head>
 
 <body >
@@ -63,6 +64,7 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="<?php echo base_url();?>application/views/assets/http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
     <!-- Start Header Top Area -->
+    <?php $id =$this->session->userdata('id');?>
     <div class="header-top-area">
         <div class="container">
             <div class="row">
@@ -75,10 +77,13 @@
                     <div class="header-top-menu">
                         <ul class="nav navbar-nav notika-top-nav">
                             <li class="nav-item dropdown">
-                                <a href="<?php echo base_url();?>application/views/assets/#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><span><i class="notika-icon notika-close"> </i></span></a>
+                                <a href="<?php echo base_url();?>application/views/assets/#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><span><i class="notika-icon notika-menu"> </i></span></a>
                                 <div role="menu" class="dropdown-menu message-dd animated zoomIn">
+                                     <div class="hd-mg-tt">
+                                         <a href="<?php echo site_url('User/updetails/'.$id)?>" ><h2>Modifier Profile  </h2></a>
+                                    </div>
                                     <div class="hd-mg-tt">
-                                        <h2>Logout </h2>
+                                         <a href="<?php echo site_url('User/logout')?>" ><h2>Logout </h2></a>
                                     </div>
                                     
                                       
@@ -180,13 +185,11 @@
                         </div>
                         <div id="Statistique" class="tab-pane notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                                <li><a href="contact.html">Statistique Apprenant </a>
+                                <li><a href="<?php echo site_url('Apprenant/stats')?>" >Apprenants/Sessions </a>
                                 </li>
-                                <li><a href="invoice.html">Statistique parcours</a>
+                                <li><a href="<?php echo site_url('Parcours/statsAction')?>">Parcours/Action</a>
                                 </li>
-                                <li><a href="typography.html">Statistique Générale </a>
-                                </li>
-                                <li><a href="color.html"> Statistique Action</a>
+                                <li><a href="<?php echo site_url('Parcours/stats')?>"> Parcours/Apprenants</a>
                                 </li>
                               
                             </ul>

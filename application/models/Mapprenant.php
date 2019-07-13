@@ -55,5 +55,14 @@ class Mapprenant extends CI_Model
         
        return $q->result();
      }
-
+      function update($nom,$prenom,$adress,$numtel,$email,$id){
+      
+           $this->db->set('nom', $nom);
+          $this->db->set('prenom', $prenom);
+          $this->db->set('adress', $adress);
+          $this->db->set('mail', $email);
+          $this->db->set('numtel', $numtel);
+          $this->db->where('id', $id);
+          $this->db->update('apprenant');
+     }
 }

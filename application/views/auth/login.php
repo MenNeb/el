@@ -58,23 +58,35 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
     <!-- Login Register area Start-->
+     
+  
     <div class="login-content">
         <!-- Login -->
 
         <div class="nk-block toggled" id="l-login">
             <h2> LOG IN </h2> 
+            
+             <?php if( isset($error) ){?>
+              <h2> 
+           Vous avez introduit des information invalide 
+                
+         
+            </h2>  
+             <?php   } ?>
+ 
+        
             <div class="nk-form">
-              <form method="post" action="<?php echo site_url('User/login'); ?>">
+              <form id="logform" method="post" action="<?php echo site_url('User/login'); ?>">
                 <div class="input-group">
                     <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-support"></i></span>
                     <div class="nk-int-st">
-                        <input type="text" class="form-control" placeholder="Username" name="user" >
+                        <input id="loguser" type="text" class="form-control" placeholder="Username" name="user" >
                     </div>
                 </div>
                 <div class="input-group mg-t-15">
                     <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-edit"></i></span>
                     <div class="nk-int-st">
-                        <input type="password" class="form-control" placeholder="Password" name="pass" >
+                        <input id="logpass" type="password" class="form-control" placeholder="Password" name="pass" >
                     </div>
                 </div>
                 
@@ -155,6 +167,22 @@
     <!-- main JS
 		============================================ -->
     <script src="<?php echo base_url();?>application/views/assets/js/main.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+                $("#logform").submit(function(e){
+
+                      var loguser = $("#loguser").val(); 
+                      var logpass = $("#logpass").val();
+
+                      console.log(loguser);
+                      if(logpass == "" && logpass == "") {
+                        e.preventDefault();
+                        alert("Vous devez remplir tout les champs");
+                      }
+                });
+        });
+      </script>  
 </body>
 
 </html>

@@ -5,13 +5,18 @@
       public function __construct() { 
          parent::__construct(); 
          $this->load->helper(array('form', 'url')); 
+          $this->load->library('session');
+         ini_set('max_execution_time', 360);
       }
 		
       public function index() { 
+
          $this->load->view('enseignant/uploadfile', array('error' => ' ' )); 
       } 
 		
       public function do_upload() { 
+        $id =$this->session->userdata('id');
+        if($id!=null){
          $config['upload_path']   = './uploads/'; 
          $config['allowed_types'] = 'csv';
          $config['max_size']      = 1000; 
@@ -63,7 +68,7 @@
                         //create User
                         $user = array('pseudo' => $ar[5] ,
                             'password'=> $ar[4],
-                            'type'=>0);
+                            'type'=>2);
                         // user_id = Id du dernier utilisateur inséré 
                         $user_id = $this->Muser->ajouter($user);
                          $apprenant= array('nom' => $ar[5] ,
@@ -112,8 +117,7 @@
                                   'ressource'=>$ressource['ressource'],
                                   'heure' =>$ressource['heure']
                                 );
-                               echo print_r($parcoursToCreate); // print the array 
-                              echo "<br>";
+                              
                               $this->Mparcours->ajouter($parcoursToCreate);
 
                         }
@@ -122,49 +126,24 @@
 
                }
                
-               // while(!feof($csvFile)){
-               //    $ar=fgetcsv($csvFile);   
-
-               //       $cours = array('titre' => $ar[0] );
-
-               //       $apprenant= array('nom' => $ar[5] ,
-               //                           'prenom'=> $ar[4]  );
-               //       $session = array('date' => $ar[1],'heure'=>$ar[2],'ip'=>$ar[3] );
-
-               //    $r= $this->Mapprenant->getIDApp($apprenant['nom'],$apprenant['prenom']);
-                    
-                     
-
-            
-                 
-               //     $act = $this->Maction->get($ar[6]);
-               //     $s =  $this->Msession->getID($session['ip'],$session['date'],$r[0]->id);
-               //    var_dump($s);
-               //     if($s !=null && $r!=null&& $act!=null){
-               //      echo($ressource);
-               //      echo($s[0]->id);
-               //      echo($act[0]->id);
-               //      echo($r[0]->id);
-               //      if (!$this->Mparcours->exist($ressource,$s[0]->id,$act[0]->id,$r[0]->id)){
-               //        $parcoursToCreate=array(
-               //            'id_apprenant'=>$r[0]->id,
-               //            'id_session'=>$s[0]->id,
-               //             'id_action'=>$act[0]->id,
-               //             'ressource'=>$ressource
-               //             );
-               //          echo print_r($parcoursToCreate); // print the array 
-               //       echo "<br>";
-               //        $this->Mparcours->ajouter($parcoursToCreate);
-                        
-               //      }
-               //     }
-               // }
-               //close opened csv file
+               
                fclose($csvFile);
                $qstring["status"] = 'Success';
+
            }
-            // $this->load->view('upload_success', $data); 
-         } 
-      } 
+            
+         } }
+         $data['parcours'] = $this->Mparcours->getAll();
+    
+            $this->page_construct('enseignant/parcours',$data);
+      }
+
+      function page_construct($page, $meta = array(), $data = array()) {
+    
+        $this->load->view( 'template/headens', $meta);
+        $this->load->view( $page, $data);
+        $this->load->view('template/footer');
+  
+  } 
    } 
 ?>

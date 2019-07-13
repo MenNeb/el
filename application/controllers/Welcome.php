@@ -26,13 +26,20 @@ class Welcome extends CI_Controller {
 		$this->load->library('session');
 		$this->load->helper('url');
 		$type = $this->session->userdata('type');
-		if($type==1){
+		$id = $this->session->userdata('id');
+		if($id !=null){
+			if($type==1){
 
 		}elseif ($type==2) {
 			
 		}else{
+
 			$this->load->view('/auth/login.php');
 
 		}
+	}else{
+		$this->load->view('/auth/login.php');
+		
+	}
 	}
 }

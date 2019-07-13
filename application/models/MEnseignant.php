@@ -55,5 +55,16 @@ class MEnseignant extends CI_Model
         
        return $q->result();
      }
-
+     function update($nom,$prenom,$adress,$numtel,$email,$id){
+      /**
+      `nom`, `prenom`, `Adress`, `email`, `numTel`
+      **/
+      $this->db->set('nom', $nom);
+      $this->db->set('prenom', $prenom);
+      $this->db->set('Adress', $adress);
+      $this->db->set('email', $email);
+      $this->db->set('numTel', $numtel);
+      $this->db->where('id', $id);
+      $this->db->update('enseignant');
+     }
 }

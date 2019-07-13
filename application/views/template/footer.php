@@ -86,29 +86,45 @@
         ============================================ -->
     <script src="js/data-table/jquery.dataTables.min.js"></script>
     <script src="js/data-table/data-table-act.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-             $('#action-table').DataTable();
-        });
-    </script>
-
+     <!-- Charts JS
+        ============================================ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <script type="text/javascript">
 
 
         $(function(){
     var ctx = document.getElementById("barperso");
+    var cData = JSON.parse(`<?php echo $chart_data; ?>`);
     var barchart1 = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ["Red", "Blue", "Yellow", "Green"],
+            labels:cData.label,
             datasets: [{
-                label: 'Bar Chart',
-                data: [12, 19, 3, 5, 2, 3],
+                label: "Nombre de sessions de chaque Apprenant",
+                data: cData.data,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgb(50,205,50, 0.2)',
                     'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)'
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(235, 152, 184, 0.2)',
+                    'rgba(36, 255, 58, 0.2)',
+
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgb(50,205,50, 0.5)',
+                    'rgba(255, 206, 86, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(235, 152, 184, 0.5)',
+                    'rgba(36, 255, 58, 0.5)',
+                
+
+                    'rgba(255, 99, 132, 0.8)',
+                    'rgb(50,205,50, 0.8)',
+                    'rgba(255, 206, 86, 0.8)',
+                    'rgba(75, 192, 192, 0.8)',
+                    'rgba(235, 152, 184, 0.8)',
+                    'rgba(36, 255, 58, 0.8)'
+                
                 ],
                 borderColor: [
                     'rgba(255,99,132,1)',
@@ -130,6 +146,90 @@
         }
     });});
     </script>
+
+      <script type="text/javascript">
+
+
+        $(function(){
+    var ctx = document.getElementById("actionchart");
+    var aData = JSON.parse(`<?php echo $chart_action; ?>`);
+    var barchart1 = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels:aData.label,
+            datasets: [{
+                label: "Stats",
+                data: aData.data,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgb(50,205,50, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(235, 152, 184, 0.2)',
+                    'rgba(36, 255, 58, 0.2)',
+
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgb(50,205,50, 0.5)',
+                    'rgba(255, 206, 86, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(235, 152, 184, 0.5)',
+                    'rgba(36, 255, 58, 0.5)',
+                
+
+                    'rgba(255, 99, 132, 0.8)',
+                    'rgb(50,205,50, 0.8)',
+                    'rgba(255, 206, 86, 0.8)',
+                    'rgba(75, 192, 192, 0.8)',
+                    'rgba(235, 152, 184, 0.8)',
+                    'rgba(36, 255, 58, 0.8)'
+                
+                ],
+                borderColor: [
+                    'rgba(255,99,132,1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero:true
+                    }
+                }]
+            }
+        }
+    });});
+    </script>
+
+    <script type="text/javascript">
+
+
+        $(function(){
+    var ctx = document.getElementById("parcourAction");
+    var aData = JSON.parse(`<?php echo $chart_parcours; ?>`);
+    var barchart1 = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels:aData.label,
+            datasets: [{
+                label: "Stats",
+                data: aData.data,
+                backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#013644" ,"#8f1a1d" ,"#d3623a" ,"#fba92e" ,"#008a93", "#ffd319" ,"#ff901f","#ff2975","#c700b5","#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#013644" ,"#8f1a1d" ,"#d3623a" ,"#fba92e" ,"#b000ff" ,"#b97777","#7ca2b3","#f3d2ad","#e0cf7c","#434343",  "#fc6b05", "#ffb62b","#65b017","#99d8d8","#9bb7bb"]
+            }]
+        },
+        options: {
+            title: {
+        display: true,
+        text: 'Statistique Parcours Actions (Nombre de parcours pour chaque Action) '
+      }
+        }
+    });});
+    </script>
 </body>
+  
 
 </html>

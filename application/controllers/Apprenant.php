@@ -17,6 +17,31 @@ class Apprenant extends CI_Controller
 	}
 
 
+	public function stats()
+	{
+ $query = $this->db->query("select count(*) as nbrsession, s.id_apprenant, a.nom as nom ,a.prenom as prenom  from session s inner join apprenant a on a.id=s.id_apprenant GROUP by s.id_apprenant");
+/*		$record = $query->result();
+      $chartd = [];
+ 
+      foreach($record as $row) {
+            $chartd['label'][] = $row->nomAction;
+            $chartd['data'][] = (int) $row->count;
+      }
+      $data['chart_data'] = $chartd;
+
+*/
+      $record = $query->result();
+      $chartd = []; 
+      foreach($record as $row) {
+      	$chartd['label'][] = $row->nom . " ".$row->prenom;
+      	$chartd['data'][] = (int) $row->nbrsession;
+      	
+
+      }
+       $data['chart_data'] = json_encode($chartd);
+	$this->page_construct('enseignant/stats',$data);
+// $this->load->view( 'enseignant/test');
+	}
 	function getall()
 	{
 		$id =$this->session->userdata('id');

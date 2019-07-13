@@ -113,60 +113,24 @@ class Parcours extends CI_Controller
 	function filterForm(){
 		$this->page_construct('enseignant/filter');
 	}
-	function getbyIDaction($id){
+	function getbyIDaction($idaction){
 		
 ///select * from parcours p INNER join Apprenant a on p.id_apprenant=a.id INNER JOIN action act on act.id=p.id_action INNER join session s on s.id_apprenant=a.id where p.id_apprenant=19
 		$id =$this->session->userdata('id');
 		if($id!=null){
-		$data['parcours'] = $query = $this->db->query("select * from Apprenant a inner join session s on a.id=s.id_apprenant inner join parcours p on p.id_apprenant=a.id and p.id_session=s.id inner join action act on act.id=p.id_action where act.id=".$id)->result();
-		
+		$data['parcours'] = $query = $this->db->query("select * from Apprenant a inner join session s on a.id=s.id_apprenant inner join parcours p on p.id_apprenant=a.id and p.id_session=s.id inner join action act on act.id=p.id_action where act.id=".$idaction)->result();
 		 $this->page_construct('enseignant/parcours',$data);
 		}else{
 			$this->load->view('/auth/login.php');
 		}
 	}
-	// public function get_apprenant()
- //     {
- //          // Datatables Variables
- //          $draw = intval($this->input->get("draw"));
- //          $start = intval($this->input->get("start"));
- //          $length = intval($this->input->get("length"));
-
-
- //          $q = $this->Mapprenant->get_Apprenant();
- //          $data = array();
-
- //         if($q->num_rows() > 0)
- //          {
- //      // we will store the results in the form of class methods by using $q->result()
- //      // if you want to store them as an array you can use $q->result_array()
- //              foreach ($q->result() as $row)
- //                {
- //                      $subdata['id'] = $row->id;
- //                      $subdata['nom'] = $row->nom;
- //                      $subdata['prenom'] = $row->prenom;
- //                      $data[]=$subdata;
- //                }
-
- //           $output = array(
- //                "draw" => $draw,
-                  
- //                 "data" => $data
- //             );
- //                     echo json_encode($output);  
-
-
- //     }
-
-
- //    }
 	function getallsession(){
 
     $data['sessions'] = $this->Msession->getAll();
     
 		$this->page_construct('enseignant/session',$data);
 	
-	}
+	}/*
 	function getstats($id){
 
 		$query =  $this->db->query(
@@ -184,7 +148,47 @@ class Parcours extends CI_Controller
        $this->load->view( 'template/head');
         $this->load->view( 'apprenant/stats',$data);
 	}
+*/
 
+	public function stats()
+	{
+ $query = $this->db->query("SELECT count(*) as nbraction , a.nom as nom ,a.prenom as prenom FROM `parcours` p inner join apprenant a on a.id=p.id_apprenant GROUP by p.id_apprenant");
+/*		$record = $query->result();
+      $chartd = [];
+ 
+      foreach($record as $row) {
+            $chartd['label'][] = $row->nomAction;
+            $chartd['data'][] = (int) $row->count;
+      }
+      $data['chart_data'] = $chartd;
+
+*/
+      $record = $query->result();
+      $chartd = []; 
+      foreach($record as $row) {
+      	$chartaction['label'][] = $row->nom . " ".$row->prenom;
+      	$chartaction['data'][] = (int) $row->nbraction;
+      	
+
+      }
+       $data['chart_action'] = json_encode($chartaction);
+	$this->page_construct('enseignant/actionstats',$data);
+// $this->load->view( 'enseignant/test');
+	}
+
+	function statsAction(){
+		$query = $this->db->query("SELECT count(*) as nbraction , a.nomAction as nom FROM `parcours` p inner join action a on a.id=p.id_action GROUP by p.id_action order by a.nomAction");
+			$record = $query->result();
+    	 	$chartd = []; 
+      		foreach($record as $row) {
+      			$chartaction['label'][] = $row->nom ;
+      			$chartaction['data'][] = (int) $row->nbraction;
+      	
+
+      		}
+       	$data['chart_parcours'] = json_encode($chartaction);
+	$this->page_construct('enseignant/parcoursaction',$data);
+	}
 	function getSessionbyID($id){
 ///select * from parcours p INNER join Apprenant a on p.id_apprenant=a.id INNER JOIN action act on act.id=p.id_action INNER join session s on s.id_apprenant=a.id where p.id_apprenant=19
 		$id =$this->session->userdata('id');

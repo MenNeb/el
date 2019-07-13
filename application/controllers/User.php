@@ -22,11 +22,11 @@ class User extends CI_Controller
 		if($row)
 
 		{	$counting['apprenant']=$this->db->query("select count(*) as nbrapp from Apprenant")->result();
-			$counting['parcourscount']=$this->db->query("select count(*) as nbrpar from parcours")->result();
+			$counting['parcours']=$this->db->query("select count(*) as nbrpar from parcours")->result();
 			$counting['action']=$this->db->query("select count(*) as nbraction from action")->result();
 			$counting['session']=$this->db->query("select count(*) as nbrsession from session")->result();
 			
-			 $counting['parcours']=$this->Mparcours->get15();
+		
 			
 			$data=$que->result();
 			if($data[0]->type==2){
@@ -53,7 +53,8 @@ class User extends CI_Controller
 		}
 		else
 		{
-			echo "error ";
+			$data['error']=  'Les informations que vous avez saisie sont invalide';
+			$this->load->view('/auth/login.php',$data);
 		}	
 
 		
@@ -104,5 +105,45 @@ class User extends CI_Controller
         $this->load->view('template/footer');
 	
 	}
+
+	public function updetails($iduser)
+	{
+		$type =$this->session->userdata('type');
+
+		if($type ==1){
+			$data['enseignant']=$this->MEnseignant->getByID($iduser);
+
+			$this->page_construct('enseignant/profile',$data);
+		}elseif ($type==2) {
+			$data['apprenant']=$this->Mapprenant->getByID($iduser);
+			$this->apprenant_construc('apprenant/profile',$data);
+		}	
+	}
+	function logout(){
+		$this->session->unset_userdata('id');
+			$this->load->view('/auth/login.php');
+	}
+
+ 	function update(){
+
+ 		$nom=$this->input->post('nom');
+		$prenom=$this->input->post('prenom');
+		$adress=$this->input->post('adress');
+		$numtel=$this->input->post('numtel');
+		$mail=$this->input->post('mail');
+		$id =$this->session->userdata('id');
+		$type =$this->session->userdata('type');
+		if($type ==1){
+			$this->MEnseignant->update($nom,$prenom,$adress,$numtel,$mail,$id);
+			$data['enseignant']=$this->MEnseignant->getByID($id);
+
+			$this->page_construct('enseignant/profile',$data);
+		}elseif ($type==2) {
+			$this->MEnseignant->update($nom,$prenom,$adress,$numtel,$mail,$id);
+			$data['apprenant']=$this->Mapprenant->getByID($id);
+			$this->apprenant_construc('apprenant/profile',$data);
+		}	
+		
+ 	}	
 }
 ?>
