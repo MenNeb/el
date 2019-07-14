@@ -60,6 +60,10 @@ class User extends CI_Controller
 
 		
 	}
+	function uploadform()
+	{
+		$this->page_construct('enseignant/uploadfile',array('error' => ' ' ));
+	}
 	function details($id){
 		$id =$this->session->userdata('id');
 		$type =$this->session->userdata('type');
